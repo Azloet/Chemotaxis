@@ -3,7 +3,6 @@ int size = 10;
 int hue;
 Bacteria[] paint = new Bacteria[500/size];
 
- 
 void setup()
 {     
   //initialize bacteria variables here
@@ -19,7 +18,6 @@ void setup()
 void draw()
 {    
   //move and show the bacteria
-  //background(0,0,30);
   for(int i = 0; i < paint.length; i++){
     if(mousePressed && (mouseButton == RIGHT)){
       hue = color(hue(hue),mouseX/5,(500-mouseY)/5,alpha(hue));
@@ -35,15 +33,6 @@ void draw()
   }
 }
 
-void mouseWheel(MouseEvent event) {
-  float e = event.getCount();
-  int temp = (int)(hue(hue)-e*10)%360;
-  if(temp<0){
-    temp+=360;
-  }
-  hue = color(temp,saturation(hue),brightness(hue),alpha(hue));
-}
- 
 class Bacteria
 {     
   float x,y;
