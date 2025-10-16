@@ -10,8 +10,8 @@ void setup()
   size(500,500);
   noStroke();
   colorMode(HSB,360,100,100,100);
-  hue = color(210,100,100,100);
   for(int i = 0; i < paint.length; i++){
+    hue = color(210,100,100,1);
     paint[i] = new Bacteria(size/2+i*size,250,hue);
   }
 }
@@ -19,17 +19,17 @@ void setup()
 void draw()
 {    
   //move and show the bacteria
-  //background(0,0,50);
+  //background(0,0,30);
   for(int i = 0; i < paint.length; i++){
     if(mousePressed && (mouseButton == RIGHT)){
-      hue = color(210,mouseX/5,(500-mouseY)/5,100);
+      hue = color(hue(hue),mouseX/5,(500-mouseY)/5,alpha(hue));
     }
+    paint[i].c = hue;
     if(mousePressed && (mouseButton == LEFT)){
-      paint[i].c = hue;
-      paint[i].blur();
+      paint[i].attract();
     }
     else{
-      //paint[i].focus(i);
+      paint[i].rndWalk();
     }
     paint[i].show();
   }
@@ -37,13 +37,17 @@ void draw()
 
 void mouseWheel(MouseEvent event) {
   float e = event.getCount();
-  println(hue(hue)+e*10);
-  hue = color(hue(hue)+e*10,saturation(hue),brightness(hue));
+  int temp = (int)(hue(hue)-e*10)%360;
+  if(temp<0){
+    temp+=360;
+  }
+  hue = color(temp,saturation(hue),brightness(hue),alpha(hue));
 }
  
 class Bacteria
 {     
-  int x,y,c;
+  float x,y;
+  int c;
   
   Bacteria(int xx,int yy,int cc){
     x = xx;
@@ -51,34 +55,26 @@ class Bacteria
     c = cc;
   }
   
-  void blur(){
-    if(x!=mouseX){
-      x += (int)((Math.random()-0.5)*20)+(mouseX - x)/abs(mouseX - x);
+  void attract(){
+    if(abs(mouseX - x)<20){
+      x += (mouseX - x)/10;
     }
-    else if(y!=mouseY){
-      x += (int)((Math.random()-0.5)*20);
+    else{
+      x += (mouseX - x)/50;
     }
-    if(y!=mouseY){
-      y += (int)((Math.random()-0.5)*20)+(mouseY - y)/abs(mouseY - y);
+    if(abs(mouseY - y)<20){
+      y += (mouseY - y)/10;
     }
-    else if(x!=mouseX){
-      y += (int)((Math.random()-0.5)*20);
+    else{
+      y += (mouseY - y)/50;
     }
+    x += (Math.random()-0.5)*10;
+    y += (Math.random()-0.5)*10;
   }
   
-  void focus(int i){
-    if(x!=size/2+i*size){
-      x += (int)((Math.random()-0.5)*10)+(size/2+i*size - x)/abs(size/2+i*size - x);
-    }
-    else if(y!=250){
-      x += (int)((Math.random()-0.5)*10);
-    }
-    if(y!=250){
-      y += (int)((Math.random()-0.5)*10)+(250 - y)/abs(250 - y);
-    }
-    else if(x!=size/2+i*size){
-      y += (int)((Math.random()-0.5)*10);
-    }
+  void rndWalk(){
+    x += (Math.random()-0.5)*10;
+    y += (Math.random()-0.5)*10;
   }
   
   void show(){
