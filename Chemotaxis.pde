@@ -23,9 +23,9 @@ void draw()
   for(int i = 0; i < paint.length; i++){
     if(mousePressed && (mouseButton == RIGHT)){
       hue = color(210,mouseX/5,(500-mouseY)/5,100);
-      paint[i].c = hue;
     }
     if(mousePressed && (mouseButton == LEFT)){
+      paint[i].c = hue;
       paint[i].blur();
     }
     else{
@@ -33,6 +33,12 @@ void draw()
     }
     paint[i].show();
   }
+}
+
+void mouseWheel(MouseEvent event) {
+  float e = event.getCount();
+  println(hue(hue)+e*10);
+  hue = color(hue(hue)+e*10,saturation(hue),brightness(hue));
 }
  
 class Bacteria
@@ -46,8 +52,18 @@ class Bacteria
   }
   
   void blur(){
-    x += (int)((Math.random()-0.5)*20);
-    y += (int)((Math.random()-0.5)*20);
+    if(x!=mouseX){
+      x += (int)((Math.random()-0.5)*20)+(mouseX - x)/abs(mouseX - x);
+    }
+    else if(y!=mouseY){
+      x += (int)((Math.random()-0.5)*20);
+    }
+    if(y!=mouseY){
+      y += (int)((Math.random()-0.5)*20)+(mouseY - y)/abs(mouseY - y);
+    }
+    else if(x!=mouseX){
+      y += (int)((Math.random()-0.5)*20);
+    }
   }
   
   void focus(int i){
