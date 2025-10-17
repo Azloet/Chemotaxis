@@ -9,14 +9,13 @@ void setup()
   noStroke();
   colorMode(HSB,360,100,100,100);
   for(int i = 0; i < paint.length; i++){
-    hue = color(210,100,100,1);
+    hue = color(210,100,100);
     paint[i] = new Bacteria(size/2+i*size,250,hue);
   }
 }
  
 void draw()
 {    
-  background(100,100,100);
   //move and show the bacteria
   for(int i = 0; i < paint.length; i++){
     paint[i].rndWalk();
