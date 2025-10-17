@@ -16,11 +16,12 @@ void setup()
   hue = 210;
   saturation = 100;
   brightness = 100;
-  alpha = 100;
+  alpha = 1;
   for(int i = 0; i < paint.length; i++){
     colour = color(hue,saturation,brightness,alpha);
     paint[i] = new Bacteria(5+i*10,250,colour);
   }
+  noLoop();
 }
  
 void draw()
@@ -43,9 +44,10 @@ void draw()
   }
 }
 
-void mouseWheel() {
+void mouseWheel(MouseEvent event) {
   hue = 360;
   colour = color(hue,saturation,brightness,alpha);
+  background(colour);
 }
  
 class Bacteria
