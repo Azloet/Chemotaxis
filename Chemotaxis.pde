@@ -16,6 +16,7 @@ void setup()
  
 void draw()
 {    
+  background(100,100,100);
   //move and show the bacteria
   for(int i = 0; i < paint.length; i++){
     if(mousePressed && (mouseButton == RIGHT)){
