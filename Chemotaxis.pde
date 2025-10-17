@@ -18,7 +18,6 @@ void setup()
 void draw()
 {    
   //move and show the bacteria
-  background(240,100,100);
   for(int i = 0; i < paint.length; i++){
     if(mousePressed && (mouseButton == LEFT)){
       paint[i].attract();
@@ -28,7 +27,6 @@ void draw()
     }
     paint[i].show();
   }
-  background(0,100,100);
 }
 
 void mouseWheel(MouseEvent event) {
