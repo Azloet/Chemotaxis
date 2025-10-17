@@ -1,7 +1,4 @@
 //declare bacteria variables here
-int size = 10;
-int hue;
-Bacteria[] paint = new Bacteria[500/size];
 
 void setup()
 {     
