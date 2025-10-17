@@ -43,8 +43,7 @@ void draw()
   }
 }
 
-void mouseWheel(MouseEvent event) {
-  float e = event.getCount();
+void mouseWheel() {
   hue = (hue+10)%360;
 }
  
