@@ -21,7 +21,6 @@ void setup()
     colour = color(hue,saturation,brightness,alpha);
     paint[i] = new Bacteria(5+i*10,250,colour);
   }
-  noLoop();
 }
  
 void draw()
@@ -31,6 +30,9 @@ void draw()
     if(mousePressed && (mouseButton == RIGHT)){
       saturation = (int)mouseX/5;
       brightness = (int)(500-mouseY)/5;
+    }
+    if(mousePressed && (mouseButton == CENTER)){
+      hue = (hue+10)%360;
     }
     if(mousePressed && (mouseButton == LEFT)){
       paint[i].attract();
@@ -42,10 +44,6 @@ void draw()
     paint[i].c = colour;
     paint[i].show();
   }
-}
-
-void mouseWheel(MouseEvent event) {
-  loop();
 }
  
 class Bacteria
