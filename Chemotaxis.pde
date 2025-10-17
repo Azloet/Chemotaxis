@@ -45,6 +45,7 @@ void draw()
 
 void mouseWheel() {
   hue = 360;
+  colour = color(hue,saturation,brightness,alpha);
 }
  
 class Bacteria
