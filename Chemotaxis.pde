@@ -45,7 +45,7 @@ void draw()
 
 void mouseWheel(MouseEvent event) {
   hue = 360;
-  colour = color(hue,saturation,brightness,alpha);
+  colour = color(hue,saturation,brightness,100);
   background(colour);
 }
  
