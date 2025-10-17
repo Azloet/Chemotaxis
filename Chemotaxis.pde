@@ -21,7 +21,6 @@ void setup()
     colour = color(hue,saturation,brightness,alpha);
     paint[i] = new Bacteria(5+i*10,250,colour);
   }
-  noLoop();
 }
  
 void draw()
