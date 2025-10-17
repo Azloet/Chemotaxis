@@ -10,8 +10,8 @@ void setup()
   colorMode(HSB,360,100,100,100);
   background(0,0,100);
   for(int i = 0; i < paint.length; i++){
-    hue = color(210,100,100,100);
-    paint[i] = new Bacteria(5+i*10,250);
+    hue = color(210,100,100,1);
+    paint[i] = new Bacteria(5+i*10,250,hue);
   }
 }
  
@@ -19,6 +19,10 @@ void draw()
 {    
   //move and show the bacteria
   for(int i = 0; i < paint.length; i++){
+    if(mousePressed && (mouseButton == RIGHT)){
+      hue = color(hue(hue),mouseX/5,(500-mouseY)/5,alpha(hue));
+    }
+    paint[i].c = hue;
     if(mousePressed && (mouseButton == LEFT)){
       paint[i].attract();
     }
@@ -43,10 +47,10 @@ class Bacteria
   float x,y;
   int c;
   
-  Bacteria(float xx,float yy){
+  Bacteria(int xx,int yy,int cc){
     x = xx;
     y = yy;
-    c = hue;
+    c = cc;
   }
   
   void attract(){
@@ -73,6 +77,6 @@ class Bacteria
   
   void show(){
     fill(c);
-    ellipse(x,y,size,size);
+    ellipse(x,y,10,10);
   }
 }
