@@ -10,7 +10,7 @@ void setup()
   colorMode(HSB,360,100,100,100);
   background(0,0,100);
   for(int i = 0; i < paint.length; i++){
-    hue = color(210,100,100);
+    hue = color(210,100,100,100);
     paint[i] = new Bacteria(5+i*10,250,hue);
   }
 }
