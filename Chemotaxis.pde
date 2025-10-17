@@ -19,16 +19,7 @@ void draw()
   background(100,100,100);
   //move and show the bacteria
   for(int i = 0; i < paint.length; i++){
-    if(mousePressed && (mouseButton == RIGHT)){
-      hue = color(hue(hue),mouseX/5,(500-mouseY)/5,alpha(hue));
-    }
-    paint[i].c = hue;
-    if(mousePressed && (mouseButton == LEFT)){
-      paint[i].attract();
-    }
-    else{
-      paint[i].rndWalk();
-    }
+    paint[i].rndWalk();
     paint[i].show();
   }
 }
