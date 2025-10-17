@@ -21,6 +21,7 @@ void setup()
     colour = color(hue,saturation,brightness,alpha);
     paint[i] = new Bacteria(5+i*10,250,colour);
   }
+noLoop();
 }
  
 void draw()
@@ -44,9 +45,7 @@ void draw()
 }
 
 void mouseWheel(MouseEvent event) {
-  hue = 360;
-  colour = color(hue,saturation,brightness,100);
-  background(colour);
+  loop();
 }
  
 class Bacteria
