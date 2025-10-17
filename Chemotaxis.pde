@@ -45,7 +45,7 @@ void draw()
 
 void mouseWheel(MouseEvent event) {
   float e = event.getCount();
-  hue = (hue+(int)(e*100))%360;
+  hue = (hue+10)%360;
 }
  
 class Bacteria
