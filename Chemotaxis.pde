@@ -37,11 +37,9 @@ void draw()
     if(mousePressed && (mouseButton == LEFT)){
       paint[i].attract();
     }
-    else{
-      paint[i].rndWalk();
-    }
     colour = color(hue,saturation,brightness,alpha);
     paint[i].c = colour;
+    paint[i].rndWalk();
     paint[i].show();
   }
 }
@@ -70,8 +68,6 @@ class Bacteria
     else{
       y += (mouseY - y)/50;
     }
-    x += (Math.random()-0.5)*10;
-    y += (Math.random()-0.5)*10;
   }
   
   void rndWalk(){
