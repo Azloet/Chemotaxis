@@ -1,6 +1,6 @@
 //declare bacteria variables here
 Bacteria[] paint = new Bacteria[500];
-color hue;
+int hue;
 
 void setup()
 {     
