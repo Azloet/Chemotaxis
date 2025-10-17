@@ -1,5 +1,5 @@
 //declare bacteria variables here
-Bacteria[] paint = new Bacteria[500/size];
+Bacteria[] paint = new Bacteria[50];
 int hue;
 
 void setup()
