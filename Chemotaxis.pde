@@ -28,8 +28,8 @@ void draw()
   //move and show the bacteria
   for(int i = 0; i < paint.length; i++){
     if(mousePressed && (mouseButton == RIGHT)){
-      saturation = mouseX/5;
-      brightness = (500-mouseY)/5;
+      saturation = (int)mouseX/5;
+      brightness = (int)(500-mouseY)/5;
     }
     if(mousePressed && (mouseButton == LEFT)){
       paint[i].attract();
