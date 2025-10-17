@@ -32,7 +32,7 @@ void draw()
       brightness = (int)(500-mouseY)/5;
     }
     if(mousePressed && (mouseButton == CENTER)){
-      hue = (hue+10)%360;
+      hue = (hue+1)%360;
     }
     if(mousePressed && (mouseButton == LEFT)){
       paint[i].attract();
