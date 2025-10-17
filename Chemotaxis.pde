@@ -1,14 +1,35 @@
 //declare bacteria variables here
+Bacteria[] paint = new Bacteria[500];
+color hue;
 
 void setup()
 {     
   //initialize bacteria variables here
   size(500,500);
+  noStroke();
+  colorMode(HSB,360,100,100,100);
+  for(int i = 0; i < paint.length; i++){
+    hue = color(210,100,100,1);
+    paint[i] = new Bacteria(size/2+i*size,250,hue);
+  }
 }
  
 void draw()
 {    
-  background(100,100,100);
+  //move and show the bacteria
+  for(int i = 0; i < paint.length; i++){
+    if(mousePressed && (mouseButton == RIGHT)){
+      hue = color(hue(hue),mouseX/5,(500-mouseY)/5,alpha(hue));
+    }
+    paint[i].c = hue;
+    if(mousePressed && (mouseButton == LEFT)){
+      paint[i].attract();
+    }
+    else{
+      paint[i].rndWalk();
+    }
+    paint[i].show();
+  }
 }
 
 void mouseWheel(MouseEvent event) {
