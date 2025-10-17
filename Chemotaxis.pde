@@ -66,7 +66,7 @@ class Bacteria
   }
   
   void show(){
-  fill(c);
+    fill(c);
     ellipse(x,y,size,size);
   }
 }
