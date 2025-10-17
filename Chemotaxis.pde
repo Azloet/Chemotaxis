@@ -44,7 +44,7 @@ void draw()
 }
 
 void mouseWheel() {
-  hue = (hue+10)%360;
+  hue = 360;
 }
  
 class Bacteria
